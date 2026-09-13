@@ -13,6 +13,7 @@ import { AboutExperience } from "@/components/about";
 import { TechConstellation } from "@/components/skills";
 import { ProjectShowcase } from "@/components/projects";
 import { Timeline } from "@/components/experience";
+import { BuildingNow } from "@/components/building";
 
 export default function Home() {
   return (
@@ -31,6 +32,9 @@ export default function Home() {
 
       {/* ── Experience ───────────────────────────────────────── */}
       <Timeline />
+
+      {/* ── Currently Building ───────────────────────────────── */}
+      <BuildingNow />
 
       {/* ── Contact ──────────────────────────────────────────── */}
       <Section id="contact" bordered className="min-h-[70vh] flex flex-col justify-center">
