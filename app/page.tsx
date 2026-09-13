@@ -15,6 +15,7 @@ import { ProjectShowcase } from "@/components/projects";
 import { Timeline } from "@/components/experience";
 import { BuildingNow } from "@/components/building";
 import { ResumeSection } from "@/components/resume";
+import { ContactExperience } from "@/components/contact";
 
 export default function Home() {
   return (
@@ -41,49 +42,7 @@ export default function Home() {
       <ResumeSection />
 
       {/* ── Contact ──────────────────────────────────────────── */}
-      <Section id="contact" bordered className="min-h-[70vh] flex flex-col justify-center">
-        <div className="text-center">
-          <Reveal>
-            <Heading label="05 — Contact" as="h2" gradient>
-              Let&apos;s Work Together
-            </Heading>
-          </Reveal>
-
-          <Reveal delay={0.15}>
-            <p className="text-body mx-auto mt-6 max-w-lg">
-              [ADD CONTACT INTRODUCTION — a brief message inviting visitors to
-              reach out. Mention what kind of opportunities you&apos;re looking
-              for.]
-            </p>
-          </Reveal>
-
-          <Reveal delay={0.25}>
-            <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-              <MagneticButton>
-                <Button
-                  href="mailto:[ADD YOUR EMAIL]"
-                  variant="primary"
-                  icon={<ArrowUpRight size={16} strokeWidth={1.5} />}
-                >
-                  Send Email
-                </Button>
-              </MagneticButton>
-
-              <MagneticButton>
-                <Button href="[ADD YOUR LINKEDIN URL]" variant="outline">
-                  LinkedIn
-                </Button>
-              </MagneticButton>
-            </div>
-          </Reveal>
-
-          <Reveal delay={0.35}>
-            <p className="mt-16 text-label">
-              [ADD YOUR EMAIL]
-            </p>
-          </Reveal>
-        </div>
-      </Section>
+      <ContactExperience />
 
       {/* ── Footer ───────────────────────────────────────────── */}
       <footer className="border-t border-[var(--color-border)]">
