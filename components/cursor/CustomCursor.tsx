@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useCallback } from "react";
 
-type CursorState = "default" | "hover" | "view" | "open" | "drag";
+type CursorState = "default" | "hover" | "view" | "open" | "drag" | "visit" | "read";
 
 interface CursorConfig {
   /** Primary dot size in px */
@@ -31,6 +31,8 @@ const CONFIG: CursorConfig = {
     view: 2.2,
     open: 1.8,
     drag: 0.8,
+    visit: 1.3,
+    read: 1.6,
   },
 };
 
@@ -66,7 +68,7 @@ export function CustomCursor() {
     const size =
       newState === "default" ? CONFIG.ringSize : CONFIG.ringSizeHover;
     const borderOpacity =
-      newState === "default" ? "0.25" : newState === "view" ? "0.15" : "0.35";
+      newState === "default" ? "0.25" : newState === "view" ? "0.15" : newState === "read" ? "0.4" : "0.35";
     const bgOpacity =
       newState === "view" || newState === "open" ? "0.04" : "0";
 
