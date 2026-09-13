@@ -86,7 +86,7 @@ export function ResumeSection({ className }: ResumeSectionProps) {
               aria-label="Open resume PDF in new tab"
             >
               {/* Document icon area */}
-              <div className="flex aspect-[3/4] flex-col items-center justify-center p-8">
+              <div className="flex aspect-[4/3] flex-col items-center justify-center p-6 md:aspect-[3/4] md:p-8">
                 {/* Icon */}
                 <div className="mb-6 flex h-16 w-16 items-center justify-center border border-[var(--color-border)]">
                   <FileText

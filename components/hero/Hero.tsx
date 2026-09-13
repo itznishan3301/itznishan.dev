@@ -108,7 +108,7 @@ export function Hero({ className }: HeroProps) {
 
           {/* Right: Portrait */}
           <div className="order-1 flex justify-center lg:order-2 lg:justify-end">
-            <HeroPortrait className="aspect-[3/4] w-full max-w-[320px] sm:max-w-[360px] lg:max-w-[420px]" />
+            <HeroPortrait className="aspect-[3/4] w-[260px] sm:w-[300px] md:w-[340px] lg:max-w-[420px]" />
           </div>
         </div>
 

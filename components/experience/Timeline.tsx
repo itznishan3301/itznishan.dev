@@ -117,7 +117,7 @@ export function Timeline({ className }: TimelineProps) {
         </SectionReveal>
 
         {/* Timeline */}
-        <div ref={containerRef} className="relative">
+        <div ref={containerRef} className="relative pl-2 md:pl-0">
           {/* Timeline line — background */}
           <div className="absolute left-4 top-0 h-full w-px bg-[var(--color-border)] md:left-1/2 md:-translate-x-px" />
 

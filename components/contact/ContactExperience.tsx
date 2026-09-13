@@ -30,7 +30,7 @@ export function ContactExperience({ className }: ContactExperienceProps) {
     <section
       id="contact"
       className={cn(
-        "relative min-h-[85vh] border-t border-[var(--color-border)]",
+        "relative min-h-[60vh] border-t border-[var(--color-border)] md:min-h-[85vh]",
         className
       )}
     >

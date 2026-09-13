@@ -141,7 +141,7 @@ function ScrollStatement({ text }: { text: string }) {
   }, [text]);
 
   return (
-    <div ref={containerRef} className="max-w-5xl">
+    <div ref={containerRef} className="max-w-full md:max-w-5xl">
       <h2
         ref={textRef}
         className="text-[var(--text-6xl)] font-medium leading-[1.15] tracking-[var(--tracking-tight)] text-[var(--color-text-primary)]"
