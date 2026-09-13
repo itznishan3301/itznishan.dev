@@ -10,6 +10,7 @@ import {
 } from "@/components/ui";
 import { Hero } from "@/components/hero";
 import { AboutExperience } from "@/components/about";
+import { TechConstellation } from "@/components/skills";
 
 export default function Home() {
   return (
@@ -21,32 +22,7 @@ export default function Home() {
       <AboutExperience />
 
       {/* ── Skills ───────────────────────────────────────────── */}
-      <Section id="skills" bordered>
-        <Reveal>
-          <Heading label="02 — Skills" as="h2" className="mb-16">
-            What I Work With
-          </Heading>
-        </Reveal>
-
-        <div className="grid-auto">
-          {["Frontend", "Backend", "Tools & DevOps"].map((category, i) => (
-            <Reveal key={category} delay={i * 0.1}>
-              <Card>
-                <h4 className="mb-6 text-[var(--text-lg)] font-medium">
-                  {category}
-                </h4>
-                <div className="flex flex-wrap gap-2">
-                  {[1, 2, 3].map((n) => (
-                    <span key={n} className="tag">
-                      [SKILL {n}]
-                    </span>
-                  ))}
-                </div>
-              </Card>
-            </Reveal>
-          ))}
-        </div>
-      </Section>
+      <TechConstellation />
 
       {/* ── Projects ─────────────────────────────────────────── */}
       <Section id="projects" bordered>
