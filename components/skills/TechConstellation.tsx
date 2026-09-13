@@ -99,8 +99,8 @@ export function TechConstellation({ className }: TechConstellationProps) {
     let currentY = 0;
 
     const animate = () => {
-      currentX += (mouseX - currentX) * 0.04;
-      currentY += (mouseY - currentY) * 0.04;
+      currentX += (mouseX - currentX) * 0.06;
+      currentY += (mouseY - currentY) * 0.06;
       layer.style.transform = `translate(${currentX * 12}px, ${currentY * 12}px)`;
       raf = requestAnimationFrame(animate);
     };
@@ -200,7 +200,7 @@ export function TechConstellation({ className }: TechConstellationProps) {
                       y2={`${nextInCategory.y}%`}
                       stroke="var(--color-border)"
                       strokeWidth="0.5"
-                      opacity={activeSkill ? 0.03 : 0.15}
+                      opacity={activeSkill ? 0.06 : 0.15}
                       style={{ transition: "opacity 0.4s ease" }}
                     />
                   );
@@ -224,7 +224,7 @@ export function TechConstellation({ className }: TechConstellationProps) {
                           "absolute flex flex-col items-center gap-1.5",
                           "transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]",
                           "outline-none",
-                          "focus-visible:ring-1 focus-visible:ring-[var(--color-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bg-primary)]"
+                          "focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bg-primary)]"
                         )}
                         style={{
                           left: `${x}%`,
@@ -250,7 +250,7 @@ export function TechConstellation({ className }: TechConstellationProps) {
                         {/* Node */}
                         <div
                           className={cn(
-                            "flex h-10 w-10 items-center justify-center rounded-full",
+                            "flex h-11 w-11 items-center justify-center rounded-full",
                             "border transition-all duration-300",
                             isActive
                               ? "border-[var(--color-text-primary)] bg-[var(--color-accent-muted)]"

@@ -30,7 +30,7 @@ export function ContactExperience({ className }: ContactExperienceProps) {
     <section
       id="contact"
       className={cn(
-        "relative min-h-[60vh] border-t border-[var(--color-border)] md:min-h-[85vh]",
+        "relative border-t border-[var(--color-border)] md:min-h-[85vh]",
         className
       )}
     >
@@ -41,7 +41,7 @@ export function ContactExperience({ className }: ContactExperienceProps) {
         </SceneCanvas>
       </div>
 
-      <div className="section-container section-padding relative z-10 flex min-h-[70vh] flex-col items-center justify-center">
+      <div className="section-container section-padding relative z-10 flex min-h-[60vh] md:min-h-[80vh] flex-col items-center justify-center">
         {/* Header */}
         <div className="mb-12 flex w-full items-center gap-4">
           <span className="text-label">07 — Contact</span>
@@ -59,7 +59,7 @@ export function ContactExperience({ className }: ContactExperienceProps) {
           </SectionReveal>
 
           <SectionReveal delay={0.15}>
-            <p className="mx-auto mb-12 max-w-lg text-body">
+            <p className="mx-auto mb-12 max-w-xl text-body">
               {personal.description}
             </p>
           </SectionReveal>

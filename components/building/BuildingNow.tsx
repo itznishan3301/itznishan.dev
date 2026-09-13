@@ -1,12 +1,7 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SectionReveal } from "@/components/ui/SectionReveal";
 import { cn } from "@/lib/utils/cn";
-
-gsap.registerPlugin(ScrollTrigger);
 
 /* ── Building item data ─────────────────────────────────────── */
 
@@ -55,22 +50,22 @@ const statusConfig: Record<
 > = {
   exploring: {
     label: "Exploring",
-    color: "bg-amber-500/60",
+    color: "bg-[#c9a96e]/60",
     pulse: false,
   },
   building: {
     label: "Building",
-    color: "bg-emerald-500/60",
+    color: "bg-[#7a9e7e]/60",
     pulse: true,
   },
   experimenting: {
     label: "Experimenting",
-    color: "bg-sky-500/60",
+    color: "bg-[#7a8fa0]/60",
     pulse: false,
   },
   learning: {
     label: "Learning",
-    color: "bg-violet-500/60",
+    color: "bg-[#9a8ab0]/60",
     pulse: false,
   },
 };
@@ -107,7 +102,7 @@ export function BuildingNow({ className }: BuildingNowProps) {
         </SectionReveal>
 
         {/* Workspace grid */}
-        <div className="grid gap-4 sm:grid-cols-2">
+        <div className="grid gap-5 sm:grid-cols-2">
           {buildingItems.map((item, i) => (
             <SectionReveal key={item.id} delay={i * 0.08}>
               <WorkspaceNode item={item} />
@@ -141,51 +136,14 @@ export function BuildingNow({ className }: BuildingNowProps) {
 /* ── Workspace Node ─────────────────────────────────────────── */
 
 function WorkspaceNode({ item }: { item: BuildingItem }) {
-  const nodeRef = useRef<HTMLDivElement>(null);
   const status = statusConfig[item.status];
-
-  // Subtle entrance animation
-  useEffect(() => {
-    const reducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-    if (reducedMotion) return;
-
-    const node = nodeRef.current;
-    if (!node) return;
-
-    const handleEnter = () => {
-      gsap.to(node, {
-        borderColor: "rgba(240, 236, 228, 0.15)",
-        duration: 0.3,
-        ease: "power2.out",
-      });
-    };
-
-    const handleLeave = () => {
-      gsap.to(node, {
-        borderColor: "rgba(240, 236, 228, 0.08)",
-        duration: 0.3,
-        ease: "power2.out",
-      });
-    };
-
-    node.addEventListener("mouseenter", handleEnter);
-    node.addEventListener("mouseleave", handleLeave);
-
-    return () => {
-      node.removeEventListener("mouseenter", handleEnter);
-      node.removeEventListener("mouseleave", handleLeave);
-    };
-  }, []);
 
   return (
     <div
-      ref={nodeRef}
       className={cn(
         "group relative border border-[var(--color-border)] bg-[var(--color-bg-secondary)] p-5",
         "transition-colors duration-300",
-        "hover:bg-[var(--color-bg-tertiary)]"
+        "hover:border-[var(--color-border-hover)] hover:bg-[var(--color-bg-tertiary)]"
       )}
     >
       {/* Status indicator */}

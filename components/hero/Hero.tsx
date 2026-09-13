@@ -44,8 +44,8 @@ export function Hero({ className }: HeroProps) {
         className="pointer-events-none absolute inset-0 z-0"
         style={{
           background: `
-            radial-gradient(ellipse 80% 50% at 70% 40%, rgba(240, 236, 228, 0.015) 0%, transparent 60%),
-            radial-gradient(ellipse 50% 80% at 20% 80%, rgba(155, 151, 142, 0.02) 0%, transparent 50%)
+            radial-gradient(ellipse 80% 50% at 70% 40%, rgba(240, 236, 228, 0.04) 0%, transparent 60%),
+            radial-gradient(ellipse 50% 80% at 20% 80%, rgba(155, 151, 142, 0.05) 0%, transparent 50%)
           `,
         }}
       />
@@ -108,7 +108,7 @@ export function Hero({ className }: HeroProps) {
 
           {/* Right: Portrait */}
           <div className="order-1 flex justify-center lg:order-2 lg:justify-end">
-            <HeroPortrait className="aspect-[3/4] w-[260px] sm:w-[300px] md:w-[340px] lg:max-w-[420px]" />
+            <HeroPortrait className="aspect-[3/4] w-[220px] sm:w-[300px] md:w-[340px] lg:max-w-[420px]" />
           </div>
         </div>
 

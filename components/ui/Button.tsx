@@ -75,7 +75,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     }
 
     return (
-      <button ref={ref} className={classes} {...props}>
+      <button ref={ref} type="button" className={classes} {...props}>
         {icon && <span className="inline-flex shrink-0">{icon}</span>}
         {children}
         {iconRight && <span className="inline-flex shrink-0">{iconRight}</span>}

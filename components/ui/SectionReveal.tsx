@@ -71,8 +71,6 @@ export function SectionReveal({
     if (reducedMotion) return;
 
     const offset = directionOffsets[direction];
-    const scaleDistance = distance / 100;
-
     const fromVars: gsap.TweenVars = {
       opacity: 0,
       x: (offset.x / 40) * distance,
@@ -120,7 +118,7 @@ export function SectionReveal({
   }, [isReady, delay, direction, distance, once, start, end, scrub]);
 
   return (
-    <div ref={ref} className={cn("will-change-transform", className)}>
+    <div ref={ref} className={cn(className)}>
       {children}
     </div>
   );

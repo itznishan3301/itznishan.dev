@@ -174,7 +174,7 @@ export function Navigation({ className }: NavigationProps) {
                   {item.label}
                   {/* Active indicator line */}
                   {isActive && (
-                    <span className="absolute -bottom-0.5 left-0 h-px w-full bg-[var(--color-text-primary)]" />
+                    <span className="absolute -bottom-0.5 left-0 h-[1.5px] w-full bg-[var(--color-text-primary)]" />
                   )}
                 </a>
               );
@@ -196,7 +196,7 @@ export function Navigation({ className }: NavigationProps) {
           {/* Mobile menu toggle */}
           <button
             ref={menuToggleRef}
-            className="flex h-8 w-8 items-center justify-center text-[var(--color-text-secondary)] md:hidden"
+            className="flex h-11 w-11 items-center justify-center text-[var(--color-text-secondary)] md:hidden"
             onClick={() => {
               if (isMobileMenuOpen) {
                 closeMobileMenu();
@@ -238,7 +238,7 @@ export function Navigation({ className }: NavigationProps) {
                   href={item.href}
                   onClick={(e) => handleNavClick(e, item.href)}
                   className={cn(
-                    "text-2xl font-medium tracking-wide transition-colors",
+                    "text-2xl font-medium tracking-tight transition-colors",
                     isActive
                       ? "text-[var(--color-text-primary)]"
                       : "text-[var(--color-text-muted)]"

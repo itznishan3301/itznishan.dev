@@ -139,6 +139,8 @@ export function CustomCursor() {
 
     // Hide default cursor via CSS class
     document.documentElement.classList.add("custom-cursor-active");
+    document.documentElement.style.cursor = "none";
+    document.body.style.cursor = "none";
 
     const onMouseMove = (e: MouseEvent) => {
       target.current.x = e.clientX;
@@ -206,6 +208,8 @@ export function CustomCursor() {
       isRunning.current = false;
       cancelAnimationFrame(rafId.current);
       document.documentElement.classList.remove("custom-cursor-active");
+      document.documentElement.style.cursor = "";
+      document.body.style.cursor = "";
       document.removeEventListener("mousemove", onMouseMove);
       document.removeEventListener("mouseleave", onMouseLeave);
       document.removeEventListener("mouseenter", onMouseEnter);

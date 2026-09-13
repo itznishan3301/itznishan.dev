@@ -25,7 +25,7 @@ export function Footer({ className }: FooterProps) {
             <p className="text-xs text-[var(--color-text-muted)]">
               {personal.title}
             </p>
-            <p className="mt-2 text-[10px] text-[var(--color-text-muted)]">
+            <p className="mt-2 text-[11px] text-[var(--color-text-muted)]">
               &copy; {new Date().getFullYear()} All rights reserved.
             </p>
           </div>
@@ -43,7 +43,7 @@ export function Footer({ className }: FooterProps) {
               >
                 <span>{link.name}</span>
                 <ArrowUpRight
-                  size={10}
+                  size={11}
                   strokeWidth={1.5}
                   className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                 />

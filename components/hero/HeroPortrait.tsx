@@ -25,8 +25,8 @@ export function HeroPortrait({ className = "" }: HeroPortraitProps) {
   const animate = useCallback(() => {
     if (!imageRef.current || !glowRef.current) return;
 
-    currentRef.current.x += (mouseRef.current.x - currentRef.current.x) * 0.06;
-    currentRef.current.y += (mouseRef.current.y - currentRef.current.y) * 0.06;
+    currentRef.current.x += (mouseRef.current.x - currentRef.current.x) * 0.08;
+    currentRef.current.y += (mouseRef.current.y - currentRef.current.y) * 0.08;
 
     const rotateX = currentRef.current.y * -4;
     const rotateY = currentRef.current.x * 4;
@@ -115,9 +115,8 @@ export function HeroPortrait({ className = "" }: HeroPortraitProps) {
         className="hero-portrait__glow absolute inset-0 z-0"
         style={{
           background:
-            "radial-gradient(ellipse at center, rgba(240, 236, 228, 0.04) 0%, transparent 65%)",
-          filter: "blur(40px)",
-          transition: "transform 0.06s linear",
+            "radial-gradient(ellipse at center, rgba(240, 236, 228, 0.07) 0%, transparent 65%)",
+          filter: "blur(30px)",
           willChange: "transform",
         }}
       />
@@ -128,7 +127,6 @@ export function HeroPortrait({ className = "" }: HeroPortraitProps) {
         className="hero-portrait__image relative z-10 overflow-hidden"
         style={{
           willChange: "transform",
-          transition: "transform 0.06s linear",
           transformStyle: "preserve-3d",
         }}
       >

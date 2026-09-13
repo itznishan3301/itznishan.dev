@@ -63,7 +63,7 @@ export function AboutExperience() {
               </h3>
             </SectionReveal>
 
-            <div className="flex flex-col gap-0">
+            <div className="flex flex-col">
               {personal.about.approach.map((point, i) => (
                 <SectionReveal key={i} delay={i * 0.1}>
                   <ApproachItem index={i + 1} text={point} />
@@ -111,7 +111,7 @@ function ScrollStatement({ text }: { text: string }) {
 
     const wordEls = textEl.querySelectorAll(".scroll-word__inner");
 
-    gsap.set(wordEls, { opacity: 0.12, y: 0 });
+    gsap.set(wordEls, { opacity: 0.15, y: 0 });
 
     ScrollTrigger.create({
       trigger: container,
@@ -127,7 +127,7 @@ function ScrollStatement({ text }: { text: string }) {
             (progress - wordProgress * 0.6) / 0.4
           );
           gsap.set(el, {
-            opacity: gsap.utils.interpolate(0.12, 1, visibility),
+            opacity: gsap.utils.interpolate(0.15, 1, visibility),
           });
         });
       },
@@ -144,7 +144,7 @@ function ScrollStatement({ text }: { text: string }) {
     <div ref={containerRef} className="max-w-full md:max-w-5xl">
       <h2
         ref={textRef}
-        className="text-[var(--text-6xl)] font-medium leading-[1.15] tracking-[var(--tracking-tight)] text-[var(--color-text-primary)]"
+        className="text-[var(--text-6xl)] font-medium leading-[1.2] tracking-[var(--tracking-tight)] text-[var(--color-text-primary)]"
         aria-label={text}
       >
         {text}

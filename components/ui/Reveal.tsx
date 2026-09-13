@@ -63,7 +63,7 @@ export function Reveal({
   return (
     <div
       ref={ref}
-      className={cn("transition-all", className)}
+      className={cn(className)}
       style={{
         opacity: isVisible ? 1 : 0,
         transform: isVisible ? "translate(0, 0)" : initialStyles.transform,

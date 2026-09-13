@@ -77,7 +77,7 @@ export function useHeroAnimation({
           opacity: 1,
           duration: 0.8,
         },
-        0.8
+        0.3
       );
 
       tl.fromTo(
@@ -91,33 +91,21 @@ export function useHeroAnimation({
           opacity: 1,
           duration: 0.8,
         },
-        1.0
+        0.7
       );
 
-      // Phase 4: CTAs — reveal the group container, then stagger children
-      tl.fromTo(
-        ".hero-cta-group",
-        {
-          opacity: 0,
-        },
-        {
-          opacity: 1,
-          duration: 0.5,
-        },
-        1.15
-      );
-
+      // Phase 4: CTAs — stagger children
       tl.fromTo(
         ".hero-cta",
         {
-          y: 15,
+          y: 20,
           opacity: 0,
         },
         {
           y: 0,
           opacity: 1,
-          duration: 0.7,
-          stagger: 0.1,
+          duration: 0.8,
+          stagger: 0.12,
         },
         1.2
       );

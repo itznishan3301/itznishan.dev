@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, useCallback, type ReactNode } from "react";
+import { useRef, useCallback, type ReactNode } from "react";
 import { cn } from "@/lib/utils/cn";
 
 interface MagneticButtonProps {
@@ -22,7 +22,7 @@ export function MagneticButton({
   href,
 }: MagneticButtonProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const innerRef = useRef<HTMLDivElement>(null);
 
   const handleMouseMove = useCallback(
     (e: React.MouseEvent<HTMLDivElement>) => {
@@ -32,13 +32,17 @@ export function MagneticButton({
       const centerY = rect.top + rect.height / 2;
       const deltaX = (e.clientX - centerX) * strength;
       const deltaY = (e.clientY - centerY) * strength;
-      setPosition({ x: deltaX, y: deltaY });
+      if (innerRef.current) {
+        innerRef.current.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
+      }
     },
     [strength]
   );
 
   const handleMouseLeave = useCallback(() => {
-    setPosition({ x: 0, y: 0 });
+    if (innerRef.current) {
+      innerRef.current.style.transform = "translate(0px, 0px)";
+    }
   }, []);
 
   const content = (
@@ -50,10 +54,9 @@ export function MagneticButton({
       onClick={onClick}
     >
       <div
+        ref={innerRef}
         className="magnetic-inner"
-        style={{
-          transform: `translate(${position.x}px, ${position.y}px)`,
-        }}
+        style={{ transition: "transform var(--transition-base)", willChange: "transform" }}
       >
         {children}
       </div>

@@ -111,7 +111,7 @@ export function Timeline({ className }: TimelineProps) {
           <h2 className="mb-4 text-[var(--text-5xl)] font-medium tracking-[var(--tracking-tight)]">
             Where I&apos;ve Been
           </h2>
-          <p className="mb-20 max-w-xl text-body">
+          <p className="mb-16 max-w-xl text-body">
             My professional journey and educational foundation.
           </p>
         </SectionReveal>
@@ -262,7 +262,7 @@ function TimelineEntryItem({ entry, index, isLast }: TimelineEntryItemProps) {
         )}
       >
         {/* Type badge */}
-        <span className="mb-3 inline-block text-[10px] font-mono uppercase tracking-widest text-[var(--color-text-muted)]">
+        <span className="mb-3 inline-block text-[11px] font-mono uppercase tracking-widest text-[var(--color-text-muted)]">
           {entry.type === "experience" ? "Work" : "Education"}
         </span>
 

@@ -119,7 +119,7 @@ function ProjectEntry({ project, index, reversed }: ProjectEntryProps) {
     });
 
     // Subtle parallax on image while scrolling through
-    gsap.to(image, {
+    const parallaxTrigger = gsap.to(image, {
       y: -30,
       scrollTrigger: {
         trigger: container,
@@ -132,6 +132,7 @@ function ProjectEntry({ project, index, reversed }: ProjectEntryProps) {
     return () => {
       imageTrigger.kill();
       contentTrigger.kill();
+      parallaxTrigger.scrollTrigger?.kill();
     };
   }, []);
 
@@ -170,7 +171,7 @@ function ProjectEntry({ project, index, reversed }: ProjectEntryProps) {
               <img
                 src={project.image}
                 alt={`Screenshot of ${project.title}`}
-                className="relative z-10 h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.03]"
+                className="relative z-10 h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.05]"
                 loading="lazy"
               />
 
@@ -214,7 +215,7 @@ function ProjectEntry({ project, index, reversed }: ProjectEntryProps) {
             </h3>
 
             {/* Description */}
-            <p className="project-reveal mb-6 max-w-lg text-[var(--text-base)] leading-relaxed text-[var(--color-text-secondary)]">
+            <p className="project-reveal mb-6 max-w-lg text-[var(--text-lg)] leading-relaxed text-[var(--color-text-secondary)]">
               {project.description}
             </p>
 
