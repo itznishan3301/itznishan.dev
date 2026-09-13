@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { SITE_CONFIG } from "@/lib/utils/constants";
+import { personal } from "@/data/personal";
 import { CustomCursor } from "@/components/cursor/CustomCursor";
 import { SmoothScroll } from "@/components/layout/SmoothScroll";
 import "./globals.css";
@@ -29,6 +30,9 @@ export const metadata: Metadata = {
   authors: [{ name: SITE_CONFIG.name }],
   creator: SITE_CONFIG.name,
   publisher: SITE_CONFIG.name,
+  alternates: {
+    canonical: SITE_CONFIG.url,
+  },
   robots: {
     index: true,
     follow: true,
@@ -41,7 +45,10 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    type: "website",
+    type: "profile",
+    firstName: personal.firstName,
+    lastName: personal.lastName,
+    username: personal.name,
     locale: "en_US",
     url: SITE_CONFIG.url,
     siteName: SITE_CONFIG.name,
@@ -75,11 +82,32 @@ export const viewport: Viewport = {
   maximumScale: 5,
 };
 
+// JSON-LD Structured Data for Person schema
+function generateJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: personal.name,
+    url: SITE_CONFIG.url,
+    jobTitle: personal.title,
+    description: personal.description,
+    email: personal.email,
+    image: `${SITE_CONFIG.url}${personal.profileImage}`,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: personal.location,
+    },
+    sameAs: [], // Add social profile URLs here when available
+  };
+}
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const jsonLd = generateJsonLd();
+
   return (
     <html
       lang="en"
@@ -89,6 +117,10 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </head>
       <body className="antialiased noise-overlay">
         <SmoothScroll>

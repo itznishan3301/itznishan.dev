@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import { NAVIGATION_ITEMS } from "@/lib/utils/constants";
 import { personal } from "@/data/personal";
 import { cn } from "@/lib/utils/cn";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Download } from "lucide-react";
 
 interface NavigationProps {
   className?: string;
@@ -136,6 +136,18 @@ export function Navigation({ className }: NavigationProps) {
                 </a>
               );
             })}
+
+            {/* CV Download — always visible for recruiters */}
+            <a
+              href={personal.resumePath}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 border border-[var(--color-border)] px-3 py-1.5 text-xs font-mono uppercase tracking-widest text-[var(--color-text-secondary)] transition-all hover:border-[var(--color-text-primary)] hover:text-[var(--color-text-primary)]"
+              aria-label="Download resume PDF"
+            >
+              <Download size={12} strokeWidth={1.5} />
+              <span>CV</span>
+            </a>
           </div>
 
           {/* Mobile menu toggle */}
@@ -182,6 +194,19 @@ export function Navigation({ className }: NavigationProps) {
                 </a>
               );
             })}
+
+            {/* CV Download in mobile menu */}
+            <a
+              href={personal.resumePath}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 text-lg text-[var(--color-text-muted)] transition-colors hover:text-[var(--color-text-primary)]"
+              aria-label="Download resume PDF"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              <Download size={16} strokeWidth={1.5} />
+              <span>Download CV</span>
+            </a>
           </nav>
         </div>
       )}
