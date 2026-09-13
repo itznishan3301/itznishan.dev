@@ -15,6 +15,12 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   iconRight?: React.ReactNode;
   /** Full width */
   fullWidth?: boolean;
+  /** Anchor-specific: open in new tab */
+  target?: string;
+  /** Anchor-specific: relationship */
+  rel?: string;
+  /** Anchor-specific: download filename */
+  download?: string;
 }
 
 const sizeStyles: Record<ButtonSize, string> = {
@@ -53,7 +59,14 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
     if (href) {
       return (
-        <a href={href} className={classes}>
+        <a
+          href={href}
+          className={classes}
+          target={props.target}
+          rel={props.rel}
+          download={props.download}
+          aria-label={props["aria-label"]}
+        >
           {icon && <span className="inline-flex shrink-0">{icon}</span>}
           {children}
           {iconRight && <span className="inline-flex shrink-0">{iconRight}</span>}

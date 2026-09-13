@@ -14,6 +14,7 @@ import { TechConstellation } from "@/components/skills";
 import { ProjectShowcase } from "@/components/projects";
 import { Timeline } from "@/components/experience";
 import { BuildingNow } from "@/components/building";
+import { ResumeSection } from "@/components/resume";
 
 export default function Home() {
   return (
@@ -35,6 +36,9 @@ export default function Home() {
 
       {/* ── Currently Building ───────────────────────────────── */}
       <BuildingNow />
+
+      {/* ── Resume ──────────────────────────────────────────── */}
+      <ResumeSection />
 
       {/* ── Contact ──────────────────────────────────────────── */}
       <Section id="contact" bordered className="min-h-[70vh] flex flex-col justify-center">
