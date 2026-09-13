@@ -121,13 +121,6 @@ function FloatingShape({
     tetrahedron: [1, 0],
   };
 
-  const GeometryComponent = {
-    icosahedron: "icosahedronGeometry",
-    octahedron: "octahedronGeometry",
-    dodecahedron: "dodecahedronGeometry",
-    tetrahedron: "tetrahedronGeometry",
-  }[geometry] as string;
-
   return (
     <mesh ref={meshRef} position={position} scale={scale}>
       {geometry === "icosahedron" && <icosahedronGeometry args={geometryArgs[geometry]} />}
@@ -150,18 +143,16 @@ function FloatingShape({
 function DepthParticles({ count = 40 }: { count?: number }) {
   const pointsRef = useRef<THREE.Points>(null);
 
-  const { positions, opacities } = useMemo(() => {
+  const positions = useMemo(() => {
     const pos = new Float32Array(count * 3);
-    const op = new Float32Array(count);
 
     for (let i = 0; i < count; i++) {
       pos[i * 3] = (Math.random() - 0.5) * 12;
       pos[i * 3 + 1] = (Math.random() - 0.5) * 8;
       pos[i * 3 + 2] = (Math.random() - 0.5) * 8 - 2;
-      op[i] = Math.random() * 0.3 + 0.05;
     }
 
-    return { positions: pos, opacities: op };
+    return pos;
   }, [count]);
 
   useFrame((state) => {

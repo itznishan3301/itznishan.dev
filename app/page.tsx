@@ -1,13 +1,3 @@
-import { ArrowUpRight, ArrowDown } from "lucide-react";
-import {
-  Section,
-  Heading,
-  Button,
-  MagneticButton,
-  Card,
-  Reveal,
-  TextLink,
-} from "@/components/ui";
 import { Hero } from "@/components/hero";
 import { AboutExperience } from "@/components/about";
 import { TechConstellation } from "@/components/skills";

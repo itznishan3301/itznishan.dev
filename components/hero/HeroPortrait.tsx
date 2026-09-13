@@ -10,6 +10,7 @@ interface HeroPortraitProps {
 /**
  * Portrait with mouse-driven parallax depth effect.
  * Uses CSS transforms for performance — no React re-renders during mouse tracking.
+ * Pauses animation when not visible via IntersectionObserver.
  */
 export function HeroPortrait({ className = "" }: HeroPortraitProps) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -56,6 +57,24 @@ export function HeroPortrait({ className = "" }: HeroPortraitProps) {
 
     if (reducedMotion || isTouch) return;
 
+    const container = containerRef.current;
+
+    // Visibility-based animation pausing
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          if (!rafRef.current) {
+            rafRef.current = requestAnimationFrame(animate);
+          }
+        } else {
+          cancelAnimationFrame(rafRef.current);
+          rafRef.current = 0;
+        }
+      },
+      { threshold: 0 }
+    );
+
+    if (container) observer.observe(container);
     rafRef.current = requestAnimationFrame(animate);
 
     const handleMouseMove = (e: MouseEvent) => {
@@ -73,11 +92,12 @@ export function HeroPortrait({ className = "" }: HeroPortraitProps) {
     };
 
     window.addEventListener("mousemove", handleMouseMove, { passive: true });
-    const container = containerRef.current;
     container?.addEventListener("mouseleave", handleMouseLeave);
 
     return () => {
       cancelAnimationFrame(rafRef.current);
+      rafRef.current = 0;
+      observer.disconnect();
       window.removeEventListener("mousemove", handleMouseMove);
       container?.removeEventListener("mouseleave", handleMouseLeave);
     };
