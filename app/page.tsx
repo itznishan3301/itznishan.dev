@@ -12,6 +12,7 @@ import { Hero } from "@/components/hero";
 import { AboutExperience } from "@/components/about";
 import { TechConstellation } from "@/components/skills";
 import { ProjectShowcase } from "@/components/projects";
+import { Timeline } from "@/components/experience";
 
 export default function Home() {
   return (
@@ -29,40 +30,7 @@ export default function Home() {
       <ProjectShowcase />
 
       {/* ── Experience ───────────────────────────────────────── */}
-      <Section id="experience" bordered>
-        <Reveal>
-          <Heading label="04 — Experience" as="h2" className="mb-16">
-            Where I&apos;ve Worked
-          </Heading>
-        </Reveal>
-
-        <div className="flex flex-col divide-y divide-[var(--color-border)]">
-          {[
-            { role: "[ROLE]", company: "[COMPANY]", period: "[PERIOD]" },
-            { role: "[ROLE]", company: "[COMPANY]", period: "[PERIOD]" },
-          ].map((exp, i) => (
-            <Reveal key={i} delay={i * 0.1}>
-              <div className="grid-split items-center py-8">
-                <div>
-                  <p className="text-label mb-1">{exp.period}</p>
-                  <p className="text-sm text-[var(--color-text-tertiary)]">
-                    {exp.company}
-                  </p>
-                </div>
-                <div>
-                  <h3 className="text-[var(--text-2xl)] font-medium">
-                    {exp.role}
-                  </h3>
-                  <p className="mt-2 text-sm text-[var(--color-text-secondary)]">
-                    [ADD ROLE DESCRIPTION — what you did, key responsibilities,
-                    and impact.]
-                  </p>
-                </div>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </Section>
+      <Timeline />
 
       {/* ── Contact ──────────────────────────────────────────── */}
       <Section id="contact" bordered className="min-h-[70vh] flex flex-col justify-center">
