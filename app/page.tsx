@@ -11,6 +11,7 @@ import {
 import { Hero } from "@/components/hero";
 import { AboutExperience } from "@/components/about";
 import { TechConstellation } from "@/components/skills";
+import { ProjectShowcase } from "@/components/projects";
 
 export default function Home() {
   return (
@@ -25,41 +26,7 @@ export default function Home() {
       <TechConstellation />
 
       {/* ── Projects ─────────────────────────────────────────── */}
-      <Section id="projects" bordered>
-        <Reveal>
-          <Heading label="03 — Projects" as="h2" className="mb-16">
-            Selected Work
-          </Heading>
-        </Reveal>
-
-        <div className="grid-2">
-          {[1, 2].map((project, i) => (
-            <Reveal key={project} delay={i * 0.1}>
-              <Card variant="flush" interactive data-cursor="view">
-                <div className="aspect-[16/10] w-full bg-[var(--color-bg-tertiary)]" />
-                <div className="p-6 md:p-8">
-                  <div className="mb-3 flex items-center justify-between">
-                    <h3 className="text-[var(--text-2xl)] font-medium">
-                      [PROJECT {project}]
-                    </h3>
-                    <span className="text-label">[YEAR]</span>
-                  </div>
-                  <p className="mb-5 text-sm leading-relaxed text-[var(--color-text-secondary)]">
-                    [ADD PROJECT DESCRIPTION — one or two sentences about what
-                    this project does and your role in it.]
-                  </p>
-                  <div className="mb-6 flex flex-wrap gap-2">
-                    <span className="tag">[TECH 1]</span>
-                    <span className="tag">[TECH 2]</span>
-                    <span className="tag">[TECH 3]</span>
-                  </div>
-                  <TextLink href="#">View Project</TextLink>
-                </div>
-              </Card>
-            </Reveal>
-          ))}
-        </div>
-      </Section>
+      <ProjectShowcase />
 
       {/* ── Experience ───────────────────────────────────────── */}
       <Section id="experience" bordered>

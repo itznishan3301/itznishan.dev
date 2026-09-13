@@ -3,6 +3,12 @@ export interface Project {
   title: string;
   description: string;
   longDescription?: string;
+  /** What problem this project solves */
+  problem?: string;
+  /** How the project solves it */
+  solution?: string;
+  /** Your role in the project */
+  role?: string;
   tags: string[];
   techStack: string[];
   image: string;
@@ -18,6 +24,9 @@ export const projects: Project[] = [
     title: '[ADD PROJECT TITLE]',
     description: '[ADD PROJECT DESCRIPTION]',
     longDescription: '[ADD LONGER PROJECT DESCRIPTION]',
+    problem: '[ADD THE PROBLEM THIS PROJECT SOLVES]',
+    solution: '[ADD YOUR SOLUTION APPROACH]',
+    role: '[ADD YOUR ROLE — e.g. Full Stack Developer]',
     tags: ['[TAG1]', '[TAG2]'],
     techStack: ['[TECH1]', '[TECH2]', '[TECH3]'],
     image: '/images/projects/placeholder.jpg',
@@ -30,6 +39,9 @@ export const projects: Project[] = [
     id: 'project-2',
     title: '[ADD PROJECT TITLE]',
     description: '[ADD PROJECT DESCRIPTION]',
+    problem: '[ADD THE PROBLEM THIS PROJECT SOLVES]',
+    solution: '[ADD YOUR SOLUTION APPROACH]',
+    role: '[ADD YOUR ROLE]',
     tags: ['[TAG1]', '[TAG2]'],
     techStack: ['[TECH1]', '[TECH2]'],
     image: '/images/projects/placeholder.jpg',
@@ -41,6 +53,9 @@ export const projects: Project[] = [
     id: 'project-3',
     title: '[ADD PROJECT TITLE]',
     description: '[ADD PROJECT DESCRIPTION]',
+    problem: '[ADD THE PROBLEM THIS PROJECT SOLVES]',
+    solution: '[ADD YOUR SOLUTION APPROACH]',
+    role: '[ADD YOUR ROLE]',
     tags: ['[TAG1]', '[TAG2]'],
     techStack: ['[TECH1]', '[TECH2]'],
     image: '/images/projects/placeholder.jpg',
