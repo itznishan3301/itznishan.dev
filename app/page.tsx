@@ -9,6 +9,7 @@ import {
   TextLink,
 } from "@/components/ui";
 import { Hero } from "@/components/hero";
+import { AboutExperience } from "@/components/about";
 
 export default function Home() {
   return (
@@ -17,40 +18,7 @@ export default function Home() {
       <Hero />
 
       {/* ── About ────────────────────────────────────────────── */}
-      <Section id="about" bordered>
-        <div className="grid-split">
-          <Reveal>
-            <Heading label="01 — About" as="h2">
-              Who I Am
-            </Heading>
-          </Reveal>
-
-          <div className="flex flex-col gap-6">
-            <Reveal delay={0.1}>
-              <p className="text-body">
-                [ADD A PARAGRAPH ABOUT YOURSELF — your background, what drives
-                you, your approach to development. This should be 2-3 sentences
-                that give visitors a sense of who you are.]
-              </p>
-            </Reveal>
-
-            <Reveal delay={0.2}>
-              <p className="text-body">
-                [ADD A SECOND PARAGRAPH — expand on your expertise, the kind of
-                work you enjoy, or your current focus. Keep it concise and
-                professional.]
-              </p>
-            </Reveal>
-
-            <Reveal delay={0.3}>
-              <div className="mt-4 flex flex-wrap gap-3">
-                <span className="badge">[LOCATION]</span>
-                <span className="badge">[AVAILABILITY]</span>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </Section>
+      <AboutExperience />
 
       {/* ── Skills ───────────────────────────────────────────── */}
       <Section id="skills" bordered>
