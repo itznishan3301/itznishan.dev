@@ -12,16 +12,19 @@ export interface Education {
 
 export const education: Education[] = [
   {
-    id: 'edu-1',
-    institution: '[ADD INSTITUTION NAME]',
-    degree: '[ADD DEGREE — e.g. Bachelor of Science]',
-    field: '[ADD FIELD OF STUDY]',
-    startDate: '[START YEAR]',
-    endDate: '[END YEAR]',
-    location: '[LOCATION]',
-    gpa: '[ADD GPA if applicable]',
+    id: 'edu-programming-hero',
+    institution: 'Programming Hero',
+    degree: 'Complete Web Development Course',
+    field: 'AI-Driven Full-Stack Web Engineering',
+    startDate: '2024',
+    endDate: 'Present',
+    location: 'Online',
     highlights: [
-      '[ADD ACHIEVEMENT or COURSE HIGHLIGHT]',
+      'Modern full-stack web development with React, Next.js, TypeScript and Node.js',
+      'AI-native development workflows including AI-assisted coding, debugging and refactoring',
+      'Product thinking, requirement analysis, PRD creation and prototyping',
+      'Database design with MongoDB, authentication systems and role-based access control',
+      'Deployment, Git workflow and professional software engineering practices',
     ],
   },
 ];

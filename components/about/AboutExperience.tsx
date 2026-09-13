@@ -45,7 +45,9 @@ export function AboutExperience() {
 
             <SectionReveal delay={0.25}>
               <div className="mt-2 flex flex-wrap gap-3">
-                <span className="badge">{personal.location}</span>
+                {!personal.location.startsWith("TODO_") && (
+                  <span className="badge">{personal.location}</span>
+                )}
                 <span className="badge">{personal.availability}</span>
               </div>
             </SectionReveal>

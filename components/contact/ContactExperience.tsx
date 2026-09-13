@@ -81,17 +81,19 @@ export function ContactExperience({ className }: ContactExperienceProps) {
             </div>
           </SectionReveal>
 
-          {/* Contact details */}
+          {/* Contact details — hide incomplete data from public UI */}
           <SectionReveal delay={0.35}>
             <div className="mb-12 flex flex-col items-center gap-3">
-              <a
-                href={`mailto:${personal.email}`}
-                className="text-lg text-[var(--color-text-secondary)] transition-colors hover:text-[var(--color-text-primary)]"
-                aria-label={`Email ${personal.email}`}
-              >
-                {personal.email}
-              </a>
-              {personal.location && (
+              {!personal.email.startsWith("TODO_") && (
+                <a
+                  href={`mailto:${personal.email}`}
+                  className="text-lg text-[var(--color-text-secondary)] transition-colors hover:text-[var(--color-text-primary)]"
+                  aria-label={`Email ${personal.email}`}
+                >
+                  {personal.email}
+                </a>
+              )}
+              {personal.location && !personal.location.startsWith("TODO_") && (
                 <p className="text-sm text-[var(--color-text-muted)]">
                   {personal.location}
                 </p>
@@ -102,26 +104,28 @@ export function ContactExperience({ className }: ContactExperienceProps) {
             </div>
           </SectionReveal>
 
-          {/* Social links */}
+          {/* Social links — only show links with valid URLs */}
           <SectionReveal delay={0.45}>
             <div className="flex flex-wrap items-center justify-center gap-6">
-              {socialLinks.map((link) => (
-                <a
-                  key={link.id}
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-center gap-2 text-sm text-[var(--color-text-tertiary)] transition-colors hover:text-[var(--color-text-primary)]"
-                  aria-label={`Visit ${link.name} profile`}
-                >
-                  <span>{link.name}</span>
-                  <ArrowUpRight
-                    size={12}
-                    strokeWidth={1.5}
-                    className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                  />
-                </a>
-              ))}
+              {socialLinks
+                .filter((link) => !link.url.includes("TODO_"))
+                .map((link) => (
+                  <a
+                    key={link.id}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex items-center gap-2 text-sm text-[var(--color-text-tertiary)] transition-colors hover:text-[var(--color-text-primary)]"
+                    aria-label={`Visit ${link.name} profile`}
+                  >
+                    <span>{link.name}</span>
+                    <ArrowUpRight
+                      size={12}
+                      strokeWidth={1.5}
+                      className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                    />
+                  </a>
+                ))}
             </div>
           </SectionReveal>
         </div>

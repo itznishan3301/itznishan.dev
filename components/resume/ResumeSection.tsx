@@ -5,7 +5,7 @@ import { SectionReveal } from "@/components/ui/SectionReveal";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils/cn";
-import { ArrowUpRight, Download, FileText, Eye } from "lucide-react";
+import { ArrowUpRight, FileText, Printer } from "lucide-react";
 
 interface ResumeSectionProps {
   className?: string;
@@ -13,7 +13,6 @@ interface ResumeSectionProps {
 
 export function ResumeSection({ className }: ResumeSectionProps) {
   const resumePath = personal.resumePath;
-  const resumeFileName = "Nuruzzaman_Nishan_Resume.pdf";
 
   return (
     <section
@@ -40,8 +39,8 @@ export function ResumeSection({ className }: ResumeSectionProps) {
 
             <SectionReveal delay={0.1}>
               <p className="mb-8 max-w-lg text-body">
-                Download my resume for a comprehensive overview of my skills,
-                experience, and qualifications. Available in PDF format.
+                View my resume for a comprehensive overview of my skills,
+                projects, and learning journey. Print-ready for a clean PDF export.
               </p>
             </SectionReveal>
 
@@ -54,7 +53,7 @@ export function ResumeSection({ className }: ResumeSectionProps) {
                     variant="primary"
                     target="_blank"
                     rel="noopener noreferrer"
-                    icon={<Eye size={16} strokeWidth={1.5} />}
+                    icon={<FileText size={16} strokeWidth={1.5} />}
                     aria-label="View resume in new tab"
                   >
                     View Resume
@@ -65,11 +64,11 @@ export function ResumeSection({ className }: ResumeSectionProps) {
                   <Button
                     href={resumePath}
                     variant="outline"
-                    download={resumeFileName}
-                    icon={<Download size={16} strokeWidth={1.5} />}
-                    aria-label="Download resume as PDF"
+                    target="_blank"
+                    icon={<Printer size={16} strokeWidth={1.5} />}
+                    aria-label="Open resume for printing"
                   >
-                    Download PDF
+                    Print / Save PDF
                   </Button>
                 </MagneticButton>
               </div>
@@ -83,9 +82,8 @@ export function ResumeSection({ className }: ResumeSectionProps) {
               target="_blank"
               rel="noopener noreferrer"
               className="group relative block overflow-hidden border border-[var(--color-border)] bg-[var(--color-bg-secondary)] transition-colors hover:border-[var(--color-border-hover)] hover:bg-[var(--color-bg-tertiary)]"
-              aria-label="Open resume PDF in new tab"
+              aria-label="Open resume in new tab"
             >
-              {/* Document icon area */}
               <div className="flex aspect-[3/4] flex-col items-center justify-center p-6 md:p-8">
                 {/* Icon */}
                 <div className="mb-6 flex h-16 w-16 items-center justify-center border border-[var(--color-border)]">
@@ -96,17 +94,17 @@ export function ResumeSection({ className }: ResumeSectionProps) {
                   />
                 </div>
 
-                {/* Filename */}
+                {/* Title */}
                 <p className="mb-2 text-sm font-medium text-[var(--color-text-primary)]">
-                  {resumeFileName}
+                  Nuruzzaman Nishan
                 </p>
                 <p className="text-xs text-[var(--color-text-muted)]">
-                  PDF Document
+                  Resume — Print Ready
                 </p>
 
                 {/* Open indicator */}
                 <div className="mt-6 flex items-center gap-1.5 text-xs text-[var(--color-text-muted)] transition-colors group-hover:text-[var(--color-text-secondary)]">
-                  <span>Open</span>
+                  <span>View</span>
                   <ArrowUpRight
                     size={12}
                     strokeWidth={1.5}
@@ -114,8 +112,6 @@ export function ResumeSection({ className }: ResumeSectionProps) {
                   />
                 </div>
               </div>
-
-
             </a>
           </SectionReveal>
         </div>

@@ -30,25 +30,27 @@ export function Footer({ className }: FooterProps) {
             </p>
           </div>
 
-          {/* Right: Social links */}
+          {/* Right: Social links — only show links with valid URLs */}
           <div className="flex items-center gap-6">
-            {socialLinks.map((link) => (
-              <a
-                key={link.id}
-                href={link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex items-center gap-1.5 text-xs text-[var(--color-text-muted)] transition-colors hover:text-[var(--color-text-secondary)]"
-                aria-label={`Visit ${link.name}`}
-              >
-                <span>{link.name}</span>
-                <ArrowUpRight
-                  size={11}
-                  strokeWidth={1.5}
-                  className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                />
-              </a>
-            ))}
+            {socialLinks
+              .filter((link) => !link.url.includes("TODO_"))
+              .map((link) => (
+                <a
+                  key={link.id}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center gap-1.5 text-xs text-[var(--color-text-muted)] transition-colors hover:text-[var(--color-text-secondary)]"
+                  aria-label={`Visit ${link.name}`}
+                >
+                  <span>{link.name}</span>
+                  <ArrowUpRight
+                    size={11}
+                    strokeWidth={1.5}
+                    className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                  />
+                </a>
+              ))}
           </div>
         </div>
       </div>

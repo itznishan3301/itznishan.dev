@@ -1,7 +1,6 @@
 export interface Skill {
   name: string;
   icon?: string;
-  proficiency?: number; // 1-100
 }
 
 export interface SkillCategory {
@@ -15,37 +14,69 @@ export const skills: SkillCategory[] = [
   {
     id: 'frontend',
     category: 'Frontend',
-    description: '[ADD DESCRIPTION]',
+    description: 'Building interactive user interfaces and modern web experiences.',
     skills: [
-      { name: '[SKILL NAME]', proficiency: 0 },
-      { name: '[SKILL NAME]', proficiency: 0 },
-      { name: '[SKILL NAME]', proficiency: 0 },
+      { name: 'HTML' },
+      { name: 'CSS' },
+      { name: 'JavaScript' },
+      { name: 'TypeScript' },
+      { name: 'React' },
+      { name: 'Next.js' },
+      { name: 'Tailwind CSS' },
+      { name: 'HeroUI' },
+      { name: 'shadcn/ui' },
     ],
   },
   {
     id: 'backend',
     category: 'Backend',
-    description: '[ADD DESCRIPTION]',
+    description: 'Server-side development, APIs and database management.',
     skills: [
-      { name: '[SKILL NAME]', proficiency: 0 },
-      { name: '[SKILL NAME]', proficiency: 0 },
+      { name: 'Node.js' },
+      { name: 'Express.js' },
+      { name: 'REST APIs' },
+      { name: 'MongoDB' },
+      { name: 'Mongoose' },
+      { name: 'Supabase' },
+      { name: 'Authentication' },
+    ],
+  },
+  {
+    id: 'ai-workflow',
+    category: 'AI & Development Workflow',
+    description: 'AI-native development practices that accelerate engineering quality.',
+    skills: [
+      { name: 'AI-Assisted Development' },
+      { name: 'Prompt Engineering' },
+      { name: 'AI-Native Workflows' },
+      { name: 'AI-Assisted Debugging' },
+      { name: 'AI-Assisted Code Review' },
+      { name: 'AI-Assisted Refactoring' },
     ],
   },
   {
     id: 'tools',
-    category: 'Tools & DevOps',
-    description: '[ADD DESCRIPTION]',
+    category: 'Tools & Platforms',
+    description: 'Development tools, deployment and infrastructure.',
     skills: [
-      { name: '[SKILL NAME]', proficiency: 0 },
-      { name: '[SKILL NAME]', proficiency: 0 },
+      { name: 'Git' },
+      { name: 'GitHub' },
+      { name: 'VPS / Linux' },
+      { name: 'Nginx' },
+      { name: 'Deployment' },
     ],
   },
   {
-    id: 'other',
-    category: 'Other',
-    description: '[ADD DESCRIPTION]',
+    id: 'exploration',
+    category: 'Exploration',
+    description: 'Creative technology and experimental building.',
     skills: [
-      { name: '[SKILL NAME]', proficiency: 0 },
+      { name: 'Three.js' },
+      { name: 'React Three Fiber' },
+      { name: '3D Modeling' },
+      { name: '3D Printing' },
+      { name: 'Python' },
+      { name: 'Telegram Bots' },
     ],
   },
 ];

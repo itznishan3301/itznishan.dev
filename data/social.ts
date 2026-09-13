@@ -2,7 +2,7 @@ export interface SocialLink {
   id: string;
   name: string;
   url: string;
-  icon: string; // Lucide icon name
+  icon: string;
   username?: string;
 }
 
@@ -10,30 +10,23 @@ export const socialLinks: SocialLink[] = [
   {
     id: 'github',
     name: 'GitHub',
-    url: '[ADD GITHUB URL]',
+    url: 'TODO_GITHUB_URL',
     icon: 'Github',
-    username: '[ADD USERNAME]',
+    username: 'TODO_GITHUB_USERNAME',
   },
   {
     id: 'linkedin',
     name: 'LinkedIn',
-    url: '[ADD LINKEDIN URL]',
+    url: 'TODO_LINKEDIN_URL',
     icon: 'Linkedin',
-    username: '[ADD USERNAME]',
-  },
-  {
-    id: 'twitter',
-    name: 'Twitter / X',
-    url: '[ADD TWITTER URL]',
-    icon: 'Twitter',
-    username: '[ADD USERNAME]',
+    username: 'TODO_LINKEDIN_USERNAME',
   },
   {
     id: 'email',
     name: 'Email',
-    url: 'mailto:[ADD YOUR EMAIL]',
+    url: 'mailto:TODO_PROFILE_EMAIL',
     icon: 'Mail',
   },
 ];
 
-export const emailContact = '[ADD YOUR EMAIL]';
+export const emailContact = 'TODO_PROFILE_EMAIL';

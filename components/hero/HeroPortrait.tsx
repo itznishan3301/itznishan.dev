@@ -130,7 +130,7 @@ export function HeroPortrait({ className = "" }: HeroPortraitProps) {
           transformStyle: "preserve-3d",
         }}
       >
-        {/* Placeholder / fallback */}
+        {/* Placeholder / fallback — shown when image is missing or loading */}
         <div
           aria-hidden="true"
           className={`absolute inset-0 z-0 bg-[var(--color-bg-tertiary)] transition-opacity duration-700 ${
@@ -138,10 +138,19 @@ export function HeroPortrait({ className = "" }: HeroPortraitProps) {
           }`}
         >
           <div className="flex h-full items-center justify-center">
-            <div className="text-center">
-              <div className="mx-auto mb-3 h-12 w-12 rounded-full border border-[var(--color-border)]" />
+            <div className="text-center px-6">
+              {/* Decorative portrait silhouette */}
+              <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full border border-[var(--color-border)] bg-[var(--color-bg-secondary)]">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="text-[var(--color-text-muted)]">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                  <circle cx="12" cy="7" r="4" />
+                </svg>
+              </div>
               <p className="text-xs text-[var(--color-text-muted)]">
-                [ADD PROFILE IMAGE — place portrait at /images/profile/portrait.jpg]
+                Add portrait image
+              </p>
+              <p className="mt-1 font-mono text-[10px] text-[var(--color-text-muted)]">
+                /images/profile/nuruzzaman-nishan.jpg
               </p>
             </div>
           </div>
