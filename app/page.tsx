@@ -8,6 +8,7 @@ import {
   Reveal,
   TextLink,
 } from "@/components/ui";
+import { SceneCanvas, TestScene } from "@/components/three/LazyScene";
 
 export default function Home() {
   return (
@@ -18,7 +19,15 @@ export default function Home() {
         className="flex min-h-screen flex-col justify-center"
         noPadding
       >
-        <div className="section-container">
+        {/* 3D Background Scene */}
+        <SceneCanvas
+          className="pointer-events-none absolute inset-0 z-0"
+          cameraPosition={[0, 0, 6]}
+        >
+          <TestScene />
+        </SceneCanvas>
+
+        <div className="section-container relative z-10">
           <Reveal delay={0.1}>
             <p className="text-label mb-6">Portfolio — Under Construction</p>
           </Reveal>
