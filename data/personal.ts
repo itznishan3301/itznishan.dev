@@ -10,7 +10,7 @@ export const personal = {
   location: '[ADD YOUR LOCATION]',
   resumePath: '/resume/Nuruzzaman_Nishan_Resume.pdf',
   availability: '[ADD AVAILABILITY STATUS — e.g. Open to opportunities]',
-  profileImage: '/images/profile.jpg',
+  profileImage: '/images/profile/portrait.jpg',
 } as const;
 
 export type Personal = typeof personal;

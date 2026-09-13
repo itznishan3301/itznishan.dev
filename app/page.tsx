@@ -8,82 +8,13 @@ import {
   Reveal,
   TextLink,
 } from "@/components/ui";
-import { SceneCanvas, TestScene } from "@/components/three/LazyScene";
+import { Hero } from "@/components/hero";
 
 export default function Home() {
   return (
     <main className="relative">
       {/* ── Hero ─────────────────────────────────────────────── */}
-      <Section
-        id="hero"
-        className="flex min-h-screen flex-col justify-center"
-        noPadding
-      >
-        {/* 3D Background Scene */}
-        <SceneCanvas
-          className="pointer-events-none absolute inset-0 z-0"
-          cameraPosition={[0, 0, 6]}
-        >
-          <TestScene />
-        </SceneCanvas>
-
-        <div className="section-container relative z-10">
-          <Reveal delay={0.1}>
-            <p className="text-label mb-6">Portfolio — Under Construction</p>
-          </Reveal>
-
-          <Reveal delay={0.2}>
-            <h1 className="max-w-4xl text-[var(--text-8xl)] font-medium leading-[0.95] tracking-[var(--tracking-tighter)]">
-              Nuruzzaman
-              <br />
-              Nishan
-            </h1>
-          </Reveal>
-
-          <Reveal delay={0.35}>
-            <p className="mt-8 max-w-xl text-body-large">
-              [ADD YOUR TAGLINE OR INTRODUCTION — a single sentence that
-              describes what you do and what makes you unique.]
-            </p>
-          </Reveal>
-
-          <Reveal delay={0.45}>
-            <div className="mt-12 flex flex-wrap items-center gap-4">
-              <MagneticButton>
-                <Button
-                  href="#contact"
-                  variant="primary"
-                  icon={<ArrowUpRight size={16} strokeWidth={1.5} />}
-                >
-                  Get in Touch
-                </Button>
-              </MagneticButton>
-
-              <MagneticButton>
-                <Button
-                  href="/resume/Nuruzzaman_Nishan_Resume.pdf"
-                  variant="outline"
-                >
-                  Download CV
-                </Button>
-              </MagneticButton>
-            </div>
-          </Reveal>
-
-          <Reveal delay={0.6} className="absolute bottom-12 left-0">
-            <div className="section-container">
-              <a
-                href="#about"
-                className="flex items-center gap-2 text-label transition-colors hover:text-[var(--color-text-primary)]"
-                aria-label="Scroll to about section"
-              >
-                <span>Scroll</span>
-                <ArrowDown size={12} strokeWidth={1.5} />
-              </a>
-            </div>
-          </Reveal>
-        </div>
-      </Section>
+      <Hero />
 
       {/* ── About ────────────────────────────────────────────── */}
       <Section id="about" bordered>

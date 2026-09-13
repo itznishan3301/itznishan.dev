@@ -654,3 +654,80 @@ a {
   transition: transform var(--transition-base);
   will-change: transform;
 }
+
+/* ============================================================
+   HERO
+   ============================================================ */
+
+/* Animation initial states — only when JS animation is active */
+.hero-animate .hero-name .hero-name__line,
+.hero-animate .hero-portrait,
+.hero-animate .hero-label,
+.hero-animate .hero-tagline,
+.hero-animate .hero-cta,
+.hero-animate .hero-scroll {
+  opacity: 0;
+}
+
+/* CTA group wrapper also hidden initially */
+.hero-animate .hero-cta-group {
+  opacity: 0;
+}
+
+.hero-name__line {
+  display: block;
+  overflow: hidden;
+}
+
+.hero-portrait__image {
+  background-color: var(--color-bg-tertiary);
+}
+
+.hero-portrait__img {
+  filter: grayscale(20%) contrast(1.05);
+  transition: filter var(--transition-slow);
+}
+
+.hero-portrait:hover .hero-portrait__img {
+  filter: grayscale(0%) contrast(1);
+}
+
+/* Scroll indicator arrow animation */
+@keyframes scrollBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(3px);
+  }
+}
+
+.hero-scroll__arrow {
+  animation: scrollBounce 1.8s ease-in-out infinite;
+}
+
+/* Reduced motion: show everything immediately */
+@media (prefers-reduced-motion: reduce) {
+  .hero-animate .hero-name .hero-name__line,
+  .hero-animate .hero-portrait,
+  .hero-animate .hero-label,
+  .hero-animate .hero-tagline,
+  .hero-animate .hero-cta,
+  .hero-animate .hero-cta-group,
+  .hero-animate .hero-scroll {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .hero-scroll__arrow {
+    animation: none !important;
+  }
+
+  .hero-portrait__img {
+    filter: none !important;
+  }
+
+  .hero-portrait:hover .hero-portrait__img {
+    filter: none !important;
+  }
+}
