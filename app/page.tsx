@@ -151,7 +151,7 @@ export default function Home() {
         <div className="grid-2">
           {[1, 2].map((project, i) => (
             <Reveal key={project} delay={i * 0.1}>
-              <Card variant="flush" interactive>
+              <Card variant="flush" interactive data-cursor="view">
                 <div className="aspect-[16/10] w-full bg-[var(--color-bg-tertiary)]" />
                 <div className="p-6 md:p-8">
                   <div className="mb-3 flex items-center justify-between">

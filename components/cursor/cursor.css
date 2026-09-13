@@ -1,0 +1,16 @@
+/* ============================================================
+   CUSTOM CURSOR STYLES
+   Only active on non-touch, non-reduced-motion devices
+   ============================================================ */
+
+.custom-cursor-active,
+.custom-cursor-active * {
+  cursor: none !important;
+}
+
+/* Ensure cursor elements never block pointer events */
+.cursor-dot,
+.cursor-ring {
+  pointer-events: none !important;
+  user-select: none !important;
+}
