@@ -35,7 +35,7 @@ export function ContactExperience({ className }: ContactExperienceProps) {
       )}
     >
       {/* 3D Orb — background atmosphere */}
-      <div className="pointer-events-none absolute inset-0 z-0 opacity-40">
+      <div className="pointer-events-none absolute inset-0 z-0 opacity-40" aria-hidden="true">
         <SceneCanvas cameraPosition={[0, 0, 5]}>
           <ContactOrbScene />
         </SceneCanvas>

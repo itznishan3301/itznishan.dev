@@ -15,6 +15,7 @@ export function Navigation({ className }: NavigationProps) {
   const [activeSection, setActiveSection] = useState<string>("");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
+  const menuToggleRef = useRef<HTMLButtonElement>(null);
 
   // Track scroll position for header styling
   useEffect(() => {
@@ -55,14 +56,19 @@ export function Navigation({ className }: NavigationProps) {
     };
   }, []);
 
+  const closeMobileMenu = useCallback(() => {
+    setIsMobileMenuOpen(false);
+    menuToggleRef.current?.focus();
+  }, []);
+
   // Close mobile menu on escape
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setIsMobileMenuOpen(false);
+      if (e.key === "Escape" && isMobileMenuOpen) closeMobileMenu();
     };
     document.addEventListener("keydown", handleEscape);
     return () => document.removeEventListener("keydown", handleEscape);
-  }, []);
+  }, [isMobileMenuOpen, closeMobileMenu]);
 
   // Lock body scroll when mobile menu is open
   useEffect(() => {
@@ -76,14 +82,51 @@ export function Navigation({ className }: NavigationProps) {
     };
   }, [isMobileMenuOpen]);
 
+  // Focus trap: move focus into menu on open, return to toggle on close
+  useEffect(() => {
+    if (!isMobileMenuOpen) return;
+    const menu = mobileMenuRef.current;
+    if (!menu) return;
+
+    const firstFocusable = menu.querySelector<HTMLElement>(
+      'a[href], button, [tabindex]:not([tabindex="-1"])'
+    );
+    firstFocusable?.focus();
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key !== "Tab") return;
+      const focusables = menu.querySelectorAll<HTMLElement>(
+        'a[href], button, [tabindex]:not([tabindex="-1"])'
+      );
+      if (focusables.length === 0) return;
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+
+      if (e.shiftKey) {
+        if (document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        }
+      } else {
+        if (document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [isMobileMenuOpen]);
+
   const handleNavClick = useCallback(
     (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
       e.preventDefault();
-      setIsMobileMenuOpen(false);
+      closeMobileMenu();
       const target = document.querySelector(href);
       target?.scrollIntoView({ behavior: "smooth" });
     },
-    []
+    [closeMobileMenu]
   );
 
   return (
@@ -152,10 +195,18 @@ export function Navigation({ className }: NavigationProps) {
 
           {/* Mobile menu toggle */}
           <button
+            ref={menuToggleRef}
             className="flex h-8 w-8 items-center justify-center text-[var(--color-text-secondary)] md:hidden"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            onClick={() => {
+              if (isMobileMenuOpen) {
+                closeMobileMenu();
+              } else {
+                setIsMobileMenuOpen(true);
+              }
+            }}
             aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
             aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-menu"
           >
             {isMobileMenuOpen ? (
               <X size={18} strokeWidth={1.5} />
@@ -170,6 +221,10 @@ export function Navigation({ className }: NavigationProps) {
       {isMobileMenuOpen && (
         <div
           ref={mobileMenuRef}
+          id="mobile-menu"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Mobile navigation menu"
           className="fixed inset-0 z-[calc(var(--z-navigation)-1)] flex flex-col justify-center bg-[var(--color-bg-primary)]/95 backdrop-blur-md md:hidden"
         >
           <nav className="flex flex-col items-center gap-8">
@@ -202,7 +257,7 @@ export function Navigation({ className }: NavigationProps) {
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-lg text-[var(--color-text-muted)] transition-colors hover:text-[var(--color-text-primary)]"
               aria-label="Download resume PDF"
-              onClick={() => setIsMobileMenuOpen(false)}
+              onClick={() => closeMobileMenu()}
             >
               <Download size={16} strokeWidth={1.5} />
               <span>Download CV</span>

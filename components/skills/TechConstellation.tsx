@@ -240,6 +240,12 @@ export function TechConstellation({ className }: TechConstellationProps) {
                         onMouseLeave={() => setHoveredSkill(null)}
                         onFocus={() => setFocusedSkill(id)}
                         onBlur={() => setFocusedSkill(null)}
+                        onKeyDown={(e) => {
+                          if (e.key === "Enter" || e.key === " ") {
+                            e.preventDefault();
+                            setFocusedSkill(focusedSkill === id ? null : id);
+                          }
+                        }}
                       >
                         {/* Node */}
                         <div

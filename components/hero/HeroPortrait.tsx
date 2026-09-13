@@ -134,6 +134,7 @@ export function HeroPortrait({ className = "" }: HeroPortraitProps) {
       >
         {/* Placeholder / fallback */}
         <div
+          aria-hidden="true"
           className={`absolute inset-0 z-0 bg-[var(--color-bg-tertiary)] transition-opacity duration-700 ${
             isLoaded ? "opacity-0" : "opacity-100"
           }`}
@@ -142,7 +143,7 @@ export function HeroPortrait({ className = "" }: HeroPortraitProps) {
             <div className="text-center">
               <div className="mx-auto mb-3 h-12 w-12 rounded-full border border-[var(--color-border)]" />
               <p className="text-xs text-[var(--color-text-muted)]">
-                [PROFILE IMAGE]
+                [ADD PROFILE IMAGE — place portrait at /images/profile/portrait.jpg]
               </p>
             </div>
           </div>
