@@ -2,8 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { SITE_CONFIG } from "@/lib/utils/constants";
 import { personal } from "@/data/personal";
-import { CustomCursor } from "@/components/cursor/CustomCursor";
-import { SmoothScroll } from "@/components/layout/SmoothScroll";
+import { Providers } from "@/components/layout/Providers";
 import "./globals.css";
 import "@/components/cursor/cursor.css";
 
@@ -123,10 +122,9 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased noise-overlay">
-        <SmoothScroll>
-          <CustomCursor />
+        <Providers>
           {children}
-        </SmoothScroll>
+        </Providers>
       </body>
     </html>
   );
