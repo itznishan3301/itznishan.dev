@@ -669,14 +669,6 @@ a {
   will-change: transform;
 }
 
-.custom-cursor-active,
-.custom-cursor-active *,
-.custom-cursor-active a,
-.custom-cursor-active button,
-.custom-cursor-active [role="button"] {
-  cursor: none !important;
-}
-
 /* ============================================================
    HERO
    ============================================================ */
