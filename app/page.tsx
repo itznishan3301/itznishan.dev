@@ -16,10 +16,14 @@ import { Timeline } from "@/components/experience";
 import { BuildingNow } from "@/components/building";
 import { ResumeSection } from "@/components/resume";
 import { ContactExperience } from "@/components/contact";
+import { Navigation } from "@/components/navigation";
+import { Footer } from "@/components/footer";
 
 export default function Home() {
   return (
-    <main className="relative">
+    <>
+      <Navigation />
+      <main className="relative">
       {/* ── Hero ─────────────────────────────────────────────── */}
       <Hero />
 
@@ -45,25 +49,8 @@ export default function Home() {
       <ContactExperience />
 
       {/* ── Footer ───────────────────────────────────────────── */}
-      <footer className="border-t border-[var(--color-border)]">
-        <div className="section-container flex flex-col items-center justify-between gap-6 py-8 md:flex-row">
-          <p className="text-xs text-[var(--color-text-muted)]">
-            &copy; {new Date().getFullYear()} Nuruzzaman Nishan. All rights
-            reserved.
-          </p>
-          <div className="flex items-center gap-6">
-            {["GitHub", "LinkedIn", "Twitter"].map((name) => (
-              <a
-                key={name}
-                href="#"
-                className="text-xs text-[var(--color-text-muted)] transition-colors hover:text-[var(--color-text-secondary)]"
-              >
-                {name}
-              </a>
-            ))}
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </main>
+    </>
   );
 }

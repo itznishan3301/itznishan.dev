@@ -1,0 +1,190 @@
+"use client";
+
+import { useState, useEffect, useCallback, useRef } from "react";
+import { NAVIGATION_ITEMS } from "@/lib/utils/constants";
+import { personal } from "@/data/personal";
+import { cn } from "@/lib/utils/cn";
+import { Menu, X } from "lucide-react";
+
+interface NavigationProps {
+  className?: string;
+}
+
+export function Navigation({ className }: NavigationProps) {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>("");
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
+
+  // Track scroll position for header styling
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Track active section via IntersectionObserver
+  useEffect(() => {
+    const sectionIds = NAVIGATION_ITEMS.map((item) =>
+      item.href.replace("#", "")
+    );
+
+    const observers: IntersectionObserver[] = [];
+
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setActiveSection(id);
+          }
+        },
+        { threshold: 0.2, rootMargin: "-20% 0px -60% 0px" }
+      );
+
+      observer.observe(el);
+      observers.push(observer);
+    });
+
+    return () => {
+      observers.forEach((obs) => obs.disconnect());
+    };
+  }, []);
+
+  // Close mobile menu on escape
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setIsMobileMenuOpen(false);
+    };
+    document.addEventListener("keydown", handleEscape);
+    return () => document.removeEventListener("keydown", handleEscape);
+  }, []);
+
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMobileMenuOpen]);
+
+  const handleNavClick = useCallback(
+    (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+      e.preventDefault();
+      setIsMobileMenuOpen(false);
+      const target = document.querySelector(href);
+      target?.scrollIntoView({ behavior: "smooth" });
+    },
+    []
+  );
+
+  return (
+    <>
+      <header
+        className={cn(
+          "fixed left-0 right-0 top-0 z-[var(--z-navigation)] transition-all duration-300",
+          isScrolled
+            ? "border-b border-[var(--color-border)] bg-[var(--color-bg-primary)]/80 backdrop-blur-md"
+            : "bg-transparent",
+          className
+        )}
+      >
+        <nav className="section-container flex h-[var(--header-height)] items-center justify-between">
+          {/* Logo / Name */}
+          <a
+            href="#hero"
+            onClick={(e) => handleNavClick(e, "#hero")}
+            className="text-sm font-medium tracking-wide text-[var(--color-text-primary)] transition-colors hover:text-[var(--color-text-secondary)]"
+            aria-label="Back to top"
+          >
+            {personal.firstName}
+            <span className="text-[var(--color-text-muted)]">.</span>
+          </a>
+
+          {/* Desktop navigation */}
+          <div className="hidden items-center gap-8 md:flex">
+            {NAVIGATION_ITEMS.map((item) => {
+              const sectionId = item.href.replace("#", "");
+              const isActive = activeSection === sectionId;
+
+              return (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  onClick={(e) => handleNavClick(e, item.href)}
+                  className={cn(
+                    "relative py-1 text-xs font-mono uppercase tracking-widest transition-colors",
+                    isActive
+                      ? "text-[var(--color-text-primary)]"
+                      : "text-[var(--color-text-muted)] hover:text-[var(--color-text-secondary)]"
+                  )}
+                  aria-current={isActive ? "true" : undefined}
+                >
+                  {item.label}
+                  {/* Active indicator line */}
+                  {isActive && (
+                    <span className="absolute -bottom-0.5 left-0 h-px w-full bg-[var(--color-text-primary)]" />
+                  )}
+                </a>
+              );
+            })}
+          </div>
+
+          {/* Mobile menu toggle */}
+          <button
+            className="flex h-8 w-8 items-center justify-center text-[var(--color-text-secondary)] md:hidden"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isMobileMenuOpen}
+          >
+            {isMobileMenuOpen ? (
+              <X size={18} strokeWidth={1.5} />
+            ) : (
+              <Menu size={18} strokeWidth={1.5} />
+            )}
+          </button>
+        </nav>
+      </header>
+
+      {/* Mobile menu overlay */}
+      {isMobileMenuOpen && (
+        <div
+          ref={mobileMenuRef}
+          className="fixed inset-0 z-[calc(var(--z-navigation)-1)] flex flex-col justify-center bg-[var(--color-bg-primary)]/95 backdrop-blur-md md:hidden"
+        >
+          <nav className="flex flex-col items-center gap-8">
+            {NAVIGATION_ITEMS.map((item, i) => {
+              const sectionId = item.href.replace("#", "");
+              const isActive = activeSection === sectionId;
+
+              return (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  onClick={(e) => handleNavClick(e, item.href)}
+                  className={cn(
+                    "text-2xl font-medium tracking-wide transition-colors",
+                    isActive
+                      ? "text-[var(--color-text-primary)]"
+                      : "text-[var(--color-text-muted)]"
+                  )}
+                  aria-current={isActive ? "true" : undefined}
+                >
+                  {item.label}
+                </a>
+              );
+            })}
+          </nav>
+        </div>
+      )}
+    </>
+  );
+}
