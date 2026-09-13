@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { SITE_CONFIG } from "@/lib/utils/constants";
 import { CustomCursor } from "@/components/cursor/CustomCursor";
+import { SmoothScroll } from "@/components/layout/SmoothScroll";
 import "./globals.css";
 import "@/components/cursor/cursor.css";
 
@@ -90,8 +91,10 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
       <body className="antialiased noise-overlay">
-        <CustomCursor />
-        {children}
+        <SmoothScroll>
+          <CustomCursor />
+          {children}
+        </SmoothScroll>
       </body>
     </html>
   );

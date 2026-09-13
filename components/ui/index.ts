@@ -5,4 +5,5 @@ export { Button } from "./Button";
 export { MagneticButton } from "./MagneticButton";
 export { Card } from "./Card";
 export { Reveal } from "./Reveal";
+export { SectionReveal } from "./SectionReveal";
 export { TextLink } from "./TextLink";
